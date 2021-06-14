@@ -1,0 +1,100 @@
+/*一番上の遷移ボタン*/
+.btn,
+location.btn{
+  color: #fff;
+  background-color: #B7046C;
+  width:300px; height:80px;
+  border: none;
+
+}
+/*お問い合わせ一覧タイトル*/
+.koumoku{
+    color:#B7046C;
+    font-size: 24px;
+    border-bottom: solid black 1px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+/*お問い合わせ種別などの外郭*/
+.listB{
+    border: solid 1px #B7046C;
+    
+    width:800px;height:200px
+    
+
+}
+/*お問い合わせ種別などの内側*/
+.list_1{
+    padding: 50px;
+    padding-left: 100px;
+}
+.list_2{
+    padding-left: 100px;
+}
+#category{
+    padding-left: 30px;
+    margin-right: 100px;
+    padding-left: 80px;
+}
+#organization{
+
+}
+/*検索ボタン位置調整*/
+.serchButton{
+    color: #fff;
+    background-color: #B7046C;
+    margin-left: 400px;
+    border: none;
+}
+
+table{
+  width: 100%;
+  border-collapse:separate;
+  border-spacing: 0;
+}
+
+table th:first-child{
+  border-radius: 5px 0 0 0;
+}
+
+table th:last-child{
+  border-radius: 0 5px 0 0;
+  border-right: 1px solid #B7046C;
+}
+
+table th{
+  text-align: center;
+  color:white;
+  background: linear-gradient(#B7046C,#B7046C);
+  border-left: 1px solid #3c6690;
+  border-top: 1px solid #3c6690;
+  border-bottom: 1px solid #3c6690;
+  box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
+  width: 5%;
+  padding: 10px 0;
+}
+
+table td{
+  text-align: center;
+  border-left: 1px solid #a8b7c5;
+  border-bottom: 1px solid #a8b7c5;
+  border-top:none;
+  box-shadow: 0px -3px 5px 1px #eee inset;
+  width: 15%;
+  padding: 10px 0;
+}
+
+table td:last-child{
+  border-right: 1px solid #a8b7c5;
+}
+
+table tr:last-child td:first-child {
+  border-radius: 0 0 0 5px;
+}
+
+table tr:last-child td:last-child {
+  border-radius: 0 0 5px 0;
+}
+
+
+

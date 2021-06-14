@@ -1,0 +1,81 @@
+<!doctype html>
+  <html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>お問い合わせ一覧</title>
+    <link rel="stylesheet" th:href="@{/css/list.css}">
+  </head>
+    <body>
+        <!-- 一番上の遷移ボタン -->
+        <div class="a">
+            <input id="list" type="button" class="btn btn" onclick="location.href='http://localhost:8080/contact/inputForm'" value="入力フォーム">
+            <input id="list" type="button" class="btn btn" onclick="location.href='http://localhost:8080/contact/list'" value="お問い合せ一覧">
+        </div>
+
+        <h1>お問い合わせ一覧</h1>
+
+        <div class = "koumoku">
+        	<span class = "b" color="#B7046C">LIST</span>
+        </div>
+		<form method="POST" th:action="@{/contact/list}">
+        	<!-- お問い合わせ種別など入力項目 -->
+	        <div class = "listB">
+		            <div class = "list_1">
+		            <span>お問合せ種別</span>
+		              <select name="contact_cd"  class="contact-select">
+						<optiom></optiom>
+		                <option th:each="mcode : ${mcodelist}" th:object="${mcode}" th:value="*{CODE_VALUE}" th:text="*{CODE_NAME}"></option>
+		              </select>
+		            <span>企業・団体・組織名</span><input type="text" name="company">
+		            </div>
+		            <div class = "list_2">
+		                <span>お問い合わせ内容</span><input type="text" name="contents">
+		                <span>お名前</span><input type="text" name="register">
+		            </div>
+			<!-- 検索ボタン -->
+				<input type="submit" name = "serchButton" class = "serchButton" value="検索">
+        	</div>
+        </form>
+
+
+			<table border="1" >
+				<thead>
+					<tr>
+						<th><label>No</label></th>
+						<th><label>お問い合わせ種別</label></th>
+						<th><label>企業・団体・組織名</label></th>
+						<th><label>お名前</label></th>
+						<th><label>電話番号</label></th>
+						<th><label>メールアドレス</label></th>
+						<th><label>住所</label></th>
+						<th><label>お問い合わせ内容</label></th>
+						<th> </th>
+					</tr>
+				</thead>
+				<tbody>
+					
+						<tr th:each="t_contact : ${getResultList}" th:object="${t_contact}">
+							<td th:text="*{CONTACT_NO}"></td>
+							<td th:each="mcode : ${mcodelist}" th:if="${mcode.CODE_VALUE} == *{CONTACT_CD}" th:text="${mcode.CODE_NAME}"></td>
+							<td th:text="*{COMPANY}"></td>
+							<td th:text="*{REGISTER}"></td>
+							<td th:text="*{TEL}"></td>
+							<td th:text="*{MALL}"></td>
+							<td th:text="*{STREET_ADDRESS}"></td>
+							<td th:text="*{CONTENTS}"></td>
+							<form method="POST" th:action="@{/contact/receptionForm}">
+							<input type="hidden" name="CONTACT_NO"  th:value="*{CONTACT_NO}">
+							<td><button type="submit" name="getbutton" >受付</button></td>
+							</form>
+						</tr>
+					
+				</tbody>
+			</table>
+
+<!--    <div>
+			<label>件</label>
+        </div>
+-->
+    </body>
+</html>

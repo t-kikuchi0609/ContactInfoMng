@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>お問い合わせ | ソフトウェア開発・IT人材派遣のCRドットアイ</title>
+<meta name="keywords" content="お問い合わせ,CRドットアイ,CR dot I,iOS,iPhone,iPad,Android,WEBシステム,ソフトウェア開発,アプリケーション開発,申請代行">
+<meta name="description" content="株式会社CRドットアイへの「お問い合わせ」はこちらから。CRドットアイはスマートフォンアプリ開発やソフトウェア開発を中心にお客様の抱える問題をITで解決いたします。">
+<meta property="og:title" content="お問い合わせ | ソフトウェア開発・IT人材派遣のCRドットアイ">
+
+<meta property="og:type" content="article">
+
+<meta property="og:url" content="http://crdoti.co.jp/contact/">
+<meta property="og:image" content="http://crdoti.co.jp/common/img/og_image.png">
+<meta property="og:site_name" content="株式会社 CRドットアイ">
+<meta property="og:description" content="株式会社CRドットアイへの「お問い合わせ」はこちらから。CRドットアイはスマートフォンアプリ開発やソフトウェア開発を中心にお客様の抱える問題をITで解決いたします。" />
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="common/img/ico/webclip.png">
+<meta name="theme-color" content="#b7046c">
+
+<link rel="stylesheet" th:href="@{/css/Common.css}">
+
+
+<body>
+<div id="wrapper" class="wrapper lower contact">
+  <main class="inner">
+    <div class="">
+      <input id="list" type="button" class="btn-cmn--purple btn-cmn--lg" onclick="location.href='http://localhost:8080/contact/inputForm'" value="入力フォーム">
+      <input id="list" type="button" class="btn-cmn--purple btn-cmn--lg" onclick="location.href='http://localhost:8080/contact/list'" value="お問い合せ一覧">
+    </div>
+    <h1 class="ttl-lower--sm">
+      お問い合わせ
+      <span class="ttl-lower__en">CONTACT</span>
+    </h1>
+    <div class="section-cmn">
+      <p class="font-bold">お問い合わせの際は、下記のフォームをご利用ください。<span class="ico-required mr05">必須</span>は必須項目ですので、必ずご入力ください。</p>
+
+      <form method="post" action="/contact/confirmation" enctype="multipart/form-data">
+        <table class="table-cmn contact-form">
+          <tr>
+            <th width="260">
+              <div class="position-relative">
+                お問い合わせ種別
+                <span class="ico-required contact-form__required">必須</span>
+              </div>
+            </th>
+            <td>
+              <select name="contact_cd"  class="contact-select"  th:value="${contact_cd}" required>
+                <option value="">選択してください</option>
+                <option th:each="mcode : ${McodeList}" th:object="${mcode}" th:value="*{CODE_VALUE}" th:text="*{CODE_NAME}" th:selected="${code_value}"></option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              企業・団体・組織名
+            </th>
+            <td>
+              <input type="text" name="company" class="contact-input" placeholder="記 : 株式会社 CRドットアイ" th:value="${company}">
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <div class="position-relative">
+                お名前
+                <span class="ico-required contact-form__required">必須</span>
+              </div>
+            </th>
+            <td>
+              <div class="contact-half">
+                <div class="contact-half__item">
+                  <input type="text" name="register1" class="contact-input" th:value="${register1}" placeholder="姓 : 山田" required>
+                </div>
+                <div class="contact-half__item">
+                  <input type="text" name="register2" class="contact-input" th:value="${register2}" placeholder="名 : 太郎" required>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <div class="position-relative">
+                電話番号
+                <span class="ico-required contact-form__required">必須</span>
+              </div>
+            </th>
+            <td>
+              <div class="contact-tel">
+                <input type="tel" name="tel1" class="contact-input contact-tel__item contact-tel__input" th:value="${tel1}" placeholder="03" maxlength="5" required>
+                <span class="contact-tel__item contact-tel__ico">-</span>
+                <input type="tel" name="tel2" class="contact-input contact-tel__item contact-tel__input" th:value="${tel2}" placeholder="3345" maxlength="4" required>
+                <span class="contact-tel__item contact-tel__ico">-</span>
+                <input type="tel" name="tel3" class="contact-input contact-tel__item contact-tel__input" th:value="${tel3}" placeholder="2772" maxlength="4" required>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <div class="position-relative">
+                メールアドレス
+                <span class="ico-required contact-form__required">必須</span>
+              </div>
+            </th>
+            <td>
+              <input type="email" name="mall" class="contact-input" th:value="${mall} "placeholder="info@crdoti.co.jp" maxlength="100" required>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              郵便番号
+            </th>
+            <td>
+              <div class="contact-zip">
+                <input type="tel" name="post_code1" maxlength="3" th:value="${post_code1}" class="contact-input contact-zip__item contact-zip__input">
+                <div class="contact-zip__item contact-zip__ico">-</div>
+                <input type="tel" name="post_code2" maxlength="4" th:value="${post_code2}" class="contact-input contact-zip__item contact-zip__input">
+                <button class="contact-zip__item contact-zip__btn" onClick="AjaxZip3.zip2addr('post_code1','post_code2','street_address', 'street_address'); return false;">住所検索</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              ご住所
+            </th>
+            <td>
+              <input type="text" name="street_address" th:value="${street_address}"maxlength="200" class="contact-input">
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <div class="position-relative">
+                お問い合わせ内容
+                <span class="ico-required contact-form__required">必須</span>
+              </div>
+            </th>
+            <td>
+              <textarea name="contents" class="contact-txt-area"  th:value="${contents}"placeholder="お問い合わせ内容をご記入ください" maxlength="1000" required></textarea>
+            </td>
+          </tr>
+        </table>
+        <div class="section-cmn pb00">
+          <div class="contact-privacy">
+            <p class="contact-privacy__ttl">個人情報の取り扱いについて</p>
+            <p class="contact-privacy__txt">お問い合わせいただく前に、当社が皆さまよりお預かりする個人情報に関する取り扱いについて、下記事項をご確認・同意願います。</p>
+            <div class="contact-privacy__box">
+              <ol class="list-number txt-paragraph">
+                <li class="list-number__item">株式会社 CRドットアイ（以下、当社という）では、お問い合わせフォームから入力いただいた個人情報を以下の目的で利用します。当社へのお問い合わせに対して対応及び資料の送付に利用します。</li>
+                <li class="list-number__item">当社では、お問い合わせいただいた個人情報を第三者に提供することはございません。</li>
+                <li class="list-number__item">当社では、上記の利用目的の達成に必要な場合、ご提供いただいた個人情報の取扱いを他社に委託する場合があります。</li>
+                <li class="list-number__item">個人情報の提供はあくまでも任意です。但し、ご提供頂けなかった場合や正しい情報を提供頂けなかった場合、お問い合わせに対応できない場合がございます。</li>
+                <li class="list-number__item">当社のウェブサイトでは、Cookieを使用しています。Cookieはウェブサイト閲覧時の利用環境の情報や、アクセス状況の把握・分析などに利用します。ただし、Cookieから取得する情報には、氏名、住所、メールアドレスなどの特定の個人を識別する情報は含まれません。</li>
+                <li class="list-number__item">当社への個人情報の利用目的の通知、開示、内容の訂正、追加または削除、利用の停止、消去及び第三者への提供の停止を希望される方は、下記の＜個人情報に関する連絡先＞までご連絡ください。必要な手続きの内容についてご案内させていただきます。</li>
+              </ol>
+              <p class="txt-paragraph">当社への個人情報の取り扱いに関する苦情・相談は、以下の連絡先までご連絡ください。</p>
+              <div class="contact-privacy__foot">
+                ＜個人情報に関する連絡先＞<br>
+                株式会社 CRドットアイ<br>
+                個人情報保護管理者<br>
+                TEL：<a href="mailto:info@crdoti.co.jp" class="txt-link">info@crdoti.co.jp</a>
+                <p style="margin-top:1.5em;">2020年11月1日よりプライバシーポリシーが改訂されます。<br>
+              <a href="/privacy/pdf/privacy_20200901.pdf" target="_blank">新しいプライバシーポリシーはこちら</a></p>
+              </div>
+            </div>
+            <div class="contact-privacy-agree">
+              <p class="contact-privacy-agree__input txt-paragraph">
+                <label>
+                  <input type="checkbox" name="agree">
+                  上記「個人情報に関する取り扱い」について同意する。
+                </label>
+              </p>
+              <p id="agreeCheck" class="txt-paragraph font-bold font-red mb30" style="display: none;">同意いただけない場合、送信できません。</p>
+              <button id="submit" type="submit" class="btn-cmn--purple btn-cmn--lg ico-arrow-trigger btn-hover-trigger contact-privacy-agree__btn" disabled>
+                <span class="btn-cmn__ico ico-arrow-long--white"></span>
+                <span class="btn-cmn__txt">送信</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <input th:type="hidden" th:name="hidden" th:value="${ok}">
+      </form>
+    </div>
+  </main>
+
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+<script th:src="@{/JavaScript/ContactInput.js}"></script>
+
+</body>
+</html>

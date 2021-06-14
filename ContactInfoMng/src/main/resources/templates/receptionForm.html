@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>対応者入力フォーム</title>
+        <link rel="stylesheet" th:href="@{/css/receptionForm.css}">
+    </head>
+        <body>
+            <!-- 一番上の遷移ボタン -->
+            <div class="a">
+                <input id="list" type="button" class="btn" onclick="location.href='http://localhost:8080/contact/inputForm'" value="入力フォーム">
+                <input id="list" type="button" class="btn" onclick="location.href='http://localhost:8080/contact/list'" value="お問い合せ一覧">
+            </div>
+
+            <h1>対応者入力フォーム</h1>
+            <span class="b" color="#B7046C">LIST</span>
+
+            <!-- 時間を受け取りここに表示 -->
+            <div class="date">
+            <label>受付日時</label><span name= "RECEPTION_DATE" th:text="${RECEPTION_DATE}"></span>
+            </div>
+
+            <!-- SQLのデータから対応者を受け取り -->
+            <form method="post" action="/contact/list">
+	            <div　class="charge">
+	                対応者
+	                <span　class ="receptonform_require">必須</span>
+	                <select name="SALE_STAFF_NO" required>
+	                	<option></option>
+	                	<option name="SALE_STAFF_NO" th:each="memployee : ${MEmployeelist}" th:value="${memployee.E_NUM}" th:text="${memployee.E_NAME}"></option>
+	              	</select>
+	            </div>
+
+            	<div class="registBtn">
+            		<input type="hidden" name="pointo" th:value="${pointoGet}">
+            		<button type="submit" name="touroku" onclick="location.href='http://localhost:8080/contact/list'" th:disabled="${sale_staff_no} != null">登録</button>
+            	</div>
+            </form>
+
+        </body>
+</html>

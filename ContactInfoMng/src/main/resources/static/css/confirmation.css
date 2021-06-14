@@ -1,0 +1,12 @@
+.back{
+	padding:50px 200px;
+}
+.back2{
+	padding:0px 250px;
+}
+#backButton{
+	margin:20px 300px;
+	color: #fff;
+    background-color: #B7046C;
+    border: none;
+}
