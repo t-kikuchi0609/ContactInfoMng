@@ -5,6 +5,12 @@ $(function() {
 		return false;
 	}
         //この辺りから書く
+				var flg = 0;
+				var error1 = (" ");
+				var error2 = (" ");
+				var error3 = (" ");
+				var error4 = (" ");
+				var error5 = (" ");
 		if(
 	      (($('input[name = "tel1"]').val() == '070' && $('input[name = "tel2"]').val().length == 4 && $('input[name = "tel3"]').val().length == 4)) ||
 	      (($('input[name = "tel1"]').val() == '080' && $('input[name = "tel2"]').val().length == 4 && $('input[name = "tel3"]').val().length == 4)) ||
@@ -14,14 +20,8 @@ $(function() {
 	      (($('input[name = "tel1"]').val().length == 3 && $('input[name = "tel2"]').val().length == 3 && $('input[name = "tel3"]').val().length == 4)) ||
 	      (($('input[name = "tel1"]').val().length == 4 && $('input[name = "tel2"]').val().length == 2 && $('input[name = "tel3"]').val().length == 4)) ||
 	      (($('input[name = "tel1"]').val().length == 5 && $('input[name = "tel2"]').val().length == 1 && $('input[name = "tel3"]').val().length == 4))){
-				var flg = 0;
-				var error1 = ("");
-				var error2 = ("");
-				var error3 = ("");
-				var error4 = ("");
-				var error5 = ("");
-				var error6 = ("");
-				flg = 0 + flg;
+
+				flg += 0;
 	       }else{
 				error1 = ("電話番号は合計で11桁以下で入力してください\n");
 	         	flg += 1;
@@ -58,7 +58,7 @@ $(function() {
 		}
 
 		//メールフォーマットチェック
-		if(/^[a-zA-Z0-9_+-]+(\.[a-zA-Z0-9_+-]+)*@([a-z][a-z-]*[a-z]*\.)+[a-z]{2,}$/.test($('input[name="mall"]').val())){
+		if(/^[a-zA-Z0-9]+(\.[a-zA-Z0-9_+-]+)*@([a-z][a-z-]*[a-z]*\.)+[a-z]{2,}$/.test($('input[name="mall"]').val())){
 			flg += 0;
 		}else{
 			error5 = ("メールアドレスの形式が正しくありません\n");
@@ -77,6 +77,7 @@ $(function() {
 
  	});
  	
+
       $('[name="agree"]').change(function() {
         agreeCheck();
       });

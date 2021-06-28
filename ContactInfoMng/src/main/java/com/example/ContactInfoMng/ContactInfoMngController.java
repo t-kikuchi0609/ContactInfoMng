@@ -97,23 +97,12 @@ public class ContactInfoMngController {
 	        //登録チェックエラー
 	        boolean ok = false;
 		    try{
-		    	model.addAttribute("hidden", ok);
 		    	t_contactRepository.save(t_contactAddData);	        
 		        return "confirmation.html";
 		    }catch(Exception e){
 		    	
 		    	ok = true;
-		    	model.addAttribute("company",company);
-		    	model.addAttribute("register1",register1);
-		    	model.addAttribute("register2",register2);
-		    	model.addAttribute("tel1",tel1);
-		    	model.addAttribute("tel2",tel2);
-		    	model.addAttribute("tel3",tel3);
-		    	model.addAttribute("mall",mall);
-		    	model.addAttribute("post_code1",post_code1);
-		    	model.addAttribute("street_address",street_address);
-		    	model.addAttribute("contents",contents);
-
+		    	model.addAttribute("ok",ok);
 		    	return "ContactInput.html";
 		    }
 		    
