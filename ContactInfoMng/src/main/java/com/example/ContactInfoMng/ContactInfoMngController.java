@@ -97,8 +97,8 @@ public class ContactInfoMngController {
 	        //登録チェックエラー
 	        boolean ok = false;
 		    try{
+		    	model.addAttribute("hidden", ok);
 		    	t_contactRepository.save(t_contactAddData);	        
-		        model.addAttribute("hidden", ok);
 		        return "confirmation.html";
 		    }catch(Exception e){
 		    	
@@ -169,41 +169,41 @@ public class ContactInfoMngController {
 		
 		//受付登録
 		//対応者入力フォーム表示
-		@PostMapping(path="/contact/receptionForm")
-		public String List2(@RequestParam int CONTACT_NO
-		  		  		   ,Model model){
-			Tcontact tcontact = t_contactRepository.getTcontact(CONTACT_NO);
-			model.addAttribute("sale_staff_no",tcontact.getSale_staff_no());
-			
-			SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm");
-			if(tcontact.getReception_date()!=null) {
-				tcontact.setReception_date(format.format(tcontact.getReception_date()));
-			}else {
-				tcontact.setReception_date("");
-			}
-			
-			model.addAttribute("reception_date",tcontact.getReception_date());
-
-			
-			Iterable<MEmployee> memployeeList = memployeeRepository.getMemployee();
-			model.addAttribute("MEmployeelist", memployeeList);
-			
-			return "receptionForm.html";
-		}
-		
-		@PostMapping(path="/contact/reception",params="touroku")
-		public String getdate(Model model
-				   			 ,@RequestParam String SALE_STAFF_NO
-				   			 ,@RequestParam String CONTACT_NO) {
-			
-			Date dateget = new Date();
-	        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm");
-	        String nowDate = format.format(dateget);
-	        
-	        t_contactRepository.setDATE(SALE_STAFF_NO,CONTACT_NO,nowDate,nowDate);
-			return "receptionForm.html";
-
-		}
+//		@PostMapping(path="/contact/receptionForm")
+//		public String List2(@RequestParam int CONTACT_NO
+//		  		  		   ,Model model){
+//			Tcontact tcontact = t_contactRepository.getTcontact(CONTACT_NO);
+//			model.addAttribute("sale_staff_no",tcontact.getSale_staff_no());
+//			
+//			SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+//			if(tcontact.getReception_date()!=null) {
+//				tcontact.setReception_date(format.format(tcontact.getReception_date()));
+//			}else {
+//				tcontact.setReception_date("");
+//			}
+//			
+//			model.addAttribute("reception_date",tcontact.getReception_date());
+//
+//			
+//			Iterable<MEmployee> memployeeList = memployeeRepository.getMemployee();
+//			model.addAttribute("MEmployeelist", memployeeList);
+//			
+//			return "receptionForm.html";
+//		}
+//		
+//		@PostMapping(path="/contact/reception",params="touroku")
+//		public String getdate(Model model
+//				   			 ,@RequestParam String SALE_STAFF_NO
+//				   			 ,@RequestParam String CONTACT_NO) {
+//			
+//			Date dateget = new Date();
+//	        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+//	        String nowDate = format.format(dateget);
+//	        
+//	        t_contactRepository.setDATE(SALE_STAFF_NO,CONTACT_NO,nowDate,nowDate);
+//			return "receptionForm.html";
+//
+//		}
 			
 //			Iterable<Mcode> mcodeList = m_codeRepository.findAll();
 //			model.addAttribute("mcodelist", mcodeList);

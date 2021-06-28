@@ -58,7 +58,7 @@
               企業・団体・組織名
             </th>
             <td>
-              <input type="text" name="company" class="contact-input" placeholder="記 : 株式会社 CRドットアイ" th:value="${company}">
+              <input type="text" name="company" class="contact-input" placeholder="記 : 株式会社 CRドットアイ" maxlength="50" th:value="${company}">
             </td>
           </tr>
           <tr>
@@ -71,10 +71,10 @@
             <td>
               <div class="contact-half">
                 <div class="contact-half__item">
-                  <input type="text" name="register1" class="contact-input" th:value="${register1}" placeholder="姓 : 山田" required>
+                  <input type="text" name="register1" class="contact-input" maxlength="10" th:value="${register1}" placeholder="姓 : 山田" required>
                 </div>
                 <div class="contact-half__item">
-                  <input type="text" name="register2" class="contact-input" th:value="${register2}" placeholder="名 : 太郎" required>
+                  <input type="text" name="register2" class="contact-input" maxlength="10" th:value="${register2}" placeholder="名 : 太郎" required>
                 </div>
               </div>
             </td>
@@ -104,7 +104,7 @@
               </div>
             </th>
             <td>
-              <input type="email" name="mall" class="contact-input" th:value="${mall} "placeholder="info@crdoti.co.jp" maxlength="100" required>
+              <input type="email" name="mall" class="contact-input" th:value="${mall} " placeholder="info@crdoti.co.jp" maxlength="100" required>
             </td>
           </tr>
           <tr>
@@ -125,7 +125,7 @@
               ご住所
             </th>
             <td>
-              <input type="text" name="street_address" th:value="${street_address}"maxlength="200" class="contact-input">
+              <input type="text" name="street_address" th:value="${street_address}" maxlength="200" class="contact-input">
             </td>
           </tr>
           <tr>
@@ -136,7 +136,7 @@
               </div>
             </th>
             <td>
-              <textarea name="contents" class="contact-txt-area"  th:value="${contents}"placeholder="お問い合わせ内容をご記入ください" maxlength="1000" required></textarea>
+              <textarea name="contents" class="contact-txt-area"  th:value="${contents}" placeholder="お問い合わせ内容をご記入ください" maxlength="1000" required></textarea>
             </td>
           </tr>
         </table>
@@ -178,7 +178,7 @@
             </div>
           </div>
         </div>
-        <input th:type="hidden" th:name="hidden" th:value="${ok}">
+        <!-- <input th:type="hidden" th:name="hidden" th:value="${ok}"> -->
       </form>
     </div>
   </main>
@@ -188,6 +188,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
 <script th:src="@{/JavaScript/ContactInput.js}"></script>
-
 </body>
+
 </html>
